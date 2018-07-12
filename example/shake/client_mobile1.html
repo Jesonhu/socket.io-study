@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>移动端参与互动1</title>
+  <style>
+    h1 {text-align: center;}
+  </style>
+</head>
+<body>
+  <h1>移动端1</h1>
+
+  <script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.js"></script>
+  <script>
+    const client_mobile = {
+      shakeLocalHost: '//192.168.1.15',
+      shakeProductHost: '//60.205.218.81',
+      PORT: '8206',
+      socket: null,
+      /** 创建连接 */
+      connect() {
+        this.socket = io.connect(`${this.shakeLocalHost}:${this.PORT}`);
+        this.emitLoginUser();
+        return this;
+      },
+      /** 监听移动端新用户加入 */
+      emitLoginUser() {
+        const mockUser = {
+          openid: '111222',
+          name: 'Tom111',
+          avatar: '',
+          score: 1
+        }
+        this.socket.emit('mobile_login', JSON.stringify(mockUser));
+        return this;
+      }
+    }
+    client_mobile.connect();
+  </script>
+</body>
+</html>

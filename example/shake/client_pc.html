@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PC大屏页面</title>
+  <style>
+    h1 {text-align: center;}
+  </style>
+</head>
+<body>
+  <h1>PC 大屏</h1>
+
+  <script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.js"></script>
+  <script>
+    const client_pc = {
+      shakeLocalHost: '//192.168.1.15',
+      shakeProductHost: '//60.205.218.81',
+      PORT: '8206',
+      socket: null,
+      /** 创建连接 */
+      connect() {
+        this.socket = io.connect(`${this.shakeLocalHost}:${this.PORT}`);
+        this.onMobileLoginUser();
+        return this;
+      },
+      /** 监听移动端在线新用户 */
+      onMobileLoginUser() {
+        this.socket.on('mobile_login_users', (userList) => {
+          console.log('mobile online:', userList);
+        });
+        return this;
+      }
+    }
+    client_pc.connect();
+  </script>
+</body>
+</html>

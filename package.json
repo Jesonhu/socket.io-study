@@ -1,0 +1,33 @@
+{
+  "name": "chatserver",
+  "version": "v1.0.0",
+  "description": "NodeJS Socket 练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
+    "chatServer": "node ./server.js",
+    "shakeServer": "node ./example/shake/server.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "ejs": "latest",
+    "mysql": "latest",
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "express-session": "latest",
+    "multer": "latest",
+    "socket.io": "latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
